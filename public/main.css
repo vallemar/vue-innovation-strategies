@@ -71,7 +71,7 @@ div[class^="column"] {
 
 .bg-gradient{
     background: rgb(255,200,35);
-    background: linear-gradient(145deg, rgba(255,200,35,0.5975434118960083) 0%, rgba(201,221,10,0.5891400505514706) 35%, rgba(0,177,193,0.614350134585084) 100%);
+    background: linear-gradient(145deg, rgba(255,200,35,1) 0%, rgba(201,221,10,1) 35%, rgba(0,177,193,1) 100%);
 }
 
 .c-view{

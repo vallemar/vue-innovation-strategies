@@ -2,6 +2,7 @@
   <div >
     <Header msg="Innovation Strategies"></Header>
     <router-view  class="view"/>
+    <BackBtn></BackBtn>
   </div>
 
 </template>
@@ -17,11 +18,13 @@
 
 .view{
   padding: 0 15px;
+  padding-bottom: 50px;
 }
 </style>
 <script>
 import Header from "@/components/Header";
+import BackBtn from "@/components/BackBtn";
 export default {
-  components: {Header}
+  components: {BackBtn, Header}
 }
 </script>
