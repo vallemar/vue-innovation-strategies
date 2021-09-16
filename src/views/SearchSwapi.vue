@@ -7,7 +7,10 @@
         <Filter v-model:query="filterName" :items="filters" class="filter"/>
         <ul>
           <li v-for="(item, i) in dataFilter" :key="i">
-            <router-link :to="{name: 'details', params: {id: (i+1),  item: JSON.stringify(item) }}"> {{ item.name }}</router-link>
+            <router-link
+                :to="{name: 'details', params: {id: extractNumberIdByURL(item),  item: JSON.stringify(item) }}">
+              {{ item.name }}
+            </router-link>
           </li>
         </ul>
       </div>
@@ -34,7 +37,7 @@ export default defineComponent({
     }
   },
   setup() {
-    /*INIT*/
+    /* Declaration */
     const data = ref<ItemSWAPI[]>()
     const route = useRoute()
     const keySearch = route.params.view;
@@ -42,6 +45,7 @@ export default defineComponent({
     const filters = ref<string[]>()
     const filterName = ref<string>("")
 
+    const extractNumberIdByURL = (item: ItemSWAPI) => item.url.charAt(item.url.length - 2)
     fetch(process.env.VUE_APP_URL_SWAPI + keySearch).then(async response => {
       data.value = (await response.json() as GenericSwapiResponse).results;
       filters.value = data.value.map(result => result.name)
@@ -50,8 +54,7 @@ export default defineComponent({
     /*COMPUTED*/
     const dataFilter = computed(() => filterName.value ? data.value?.filter(result => result.name.includes(filterName.value)) : data.value)
 
-
-    return {data, keySearch, childURL, filters, dataFilter, filterName}
+    return {data, keySearch, childURL, filters, dataFilter, filterName, extractNumberIdByURL}
   }
 });
 </script>
