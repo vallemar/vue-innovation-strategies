@@ -7,11 +7,10 @@
         <Filter v-model:query="filterName" :items="filters" class="filter"/>
         <ul>
           <li v-for="(item, i) in dataFilter" :key="i">
-            <router-link :to="childURL"> {{ item.name }}</router-link>
+            <router-link :to="{name: 'details', params: {id: (i+1),  item: JSON.stringify(item) }}"> {{ item.name }}</router-link>
           </li>
         </ul>
       </div>
-
     </div>
   </div>
 </template>
