@@ -5,7 +5,7 @@ export type ItemCategoryMenu = {
 
 export interface GenericSwapiResponse {
     count: number;
-    results: People[] | Starships[] | Planets[];
+    results: ItemSWAPI[];
 }
 
 export interface ItemSWAPI {
